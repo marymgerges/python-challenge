@@ -17,6 +17,12 @@ previous_profit_or_loss = 0
 # Set initial variable for the change in profit/loss over the entire period
 change_of_profit_or_loss = 0
 
+
+total_change = 0
+
+
+total_change_counter = 0
+
 # Set initial variable for the greatest increase in profits over the entire period
 greatest_increase_profits = ["", 0]
 
@@ -36,14 +42,19 @@ with open(budget_data_csv, 'r') as csvfile:
     for row in csvreader:
 
         # Calculate total number of months in data
-        total_number_months +=1
+        total_number_months += 1
 
         # Calculate total profit/loss over entire period
         total_profit_or_loss += int(row[1])
 
         # Calculate change in profit/loss from previous to current row
-        change_of_profit_or_loss = int(row[1]) - previous_profit_or_loss
+        if row[0] != "Jan-10":
+            change_of_profit_or_loss = int(row[1]) - previous_profit_or_loss
+            total_change += change_of_profit_or_loss
+            total_change_counter += 1
+
         previous_profit_or_loss = int(row[1])
+
 
         # Calculate greatest increase in profits (date and amount) over entire period
         if greatest_increase_profits[1] < change_of_profit_or_loss:
@@ -56,7 +67,7 @@ with open(budget_data_csv, 'r') as csvfile:
             greatest_decrease_profits[1] = change_of_profit_or_loss 
 
 # Calculate average change in profit/loss over entire period and set value to two decimal places
-average_change_profits_or_losses = round(change_of_profit_or_loss/total_number_months, 2)
+average_change_profits_or_losses = round(total_change/total_change_counter, 2)
 
 
 # Print analysis to console
@@ -72,14 +83,11 @@ analysis = os.path.join("analysis/analysis_results.txt")
 
 # Print analysis to text file
 with open(analysis, "w") as csvfile:
-    csvwriter = csv.writer(csvfile)
-    csvwriter.writerow("Financial Analysis")
-    csvwriter.writerow("----------------------------")
-    csvwriter.writerow(f"Total Months: {total_number_months}")
-    csvwriter.writerow(f"Total: ${total_profit_or_loss}\n")
-    csvwriter.writerow(f"Average Change: ${average_change_profits_or_losses:2f}")
-    csvwriter.writerow(f"Greatest Increase in Profits: {greatest_increase_profits[0]} (${greatest_increase_profits[1]})")
-    csvwriter.writerow(f"Greatest Decrease in Profits: {greatest_decrease_profits[0]} (${greatest_decrease_profits[1]})")
-
-# Print analysis to terminal
-print(analysis)
+    # csvwriter = csv.writer(csvfile)
+    csvfile.write("Financial Analysis\n")
+    csvfile.write("----------------------------\n")
+    csvfile.write(f"Total Months: {total_number_months}\n")
+    csvfile.write(f"Total: ${total_profit_or_loss}\n")
+    csvfile.write(f"Average Change: ${average_change_profits_or_losses}\n")
+    csvfile.write(f"Greatest Increase in Profits: {greatest_increase_profits[0]} (${greatest_increase_profits[1]})\n")
+    csvfile.write(f"Greatest Decrease in Profits: {greatest_decrease_profits[0]} (${greatest_decrease_profits[1]})\n")

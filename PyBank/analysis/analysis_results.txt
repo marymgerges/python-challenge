@@ -1,8 +1,7 @@
-F,i,n,a,n,c,i,a,l, ,A,n,a,l,y,s,i,s
--,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
-T,o,t,a,l, ,M,o,n,t,h,s,:, ,8,6
-T,o,t,a,l,:, ,$,2,2,5,6,4,1,9,8,"
-"
-A,v,e,r,a,g,e, ,C,h,a,n,g,e,:, ,$,-,1,0,4,4,9,.,7,2,0,0,0,0
-G,r,e,a,t,e,s,t, ,I,n,c,r,e,a,s,e, ,i,n, ,P,r,o,f,i,t,s,:, ,A,u,g,-,1,6, ,(,$,1,8,6,2,0,0,2,)
-G,r,e,a,t,e,s,t, ,D,e,c,r,e,a,s,e, ,i,n, ,P,r,o,f,i,t,s,:, ,F,e,b,-,1,4, ,(,$,-,1,8,2,5,5,5,8,)
+Financial Analysis
+----------------------------
+Total Months: 86
+Total: $22564198
+Average Change: $-8311.11
+Greatest Increase in Profits: Aug-16 ($1862002)
+Greatest Decrease in Profits: Feb-14 ($-1825558)
