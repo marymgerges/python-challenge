@@ -63,22 +63,19 @@ analysis = os.path.join("analysis/analysis_results.txt")
 
 # Print analysis to text file
 with open(analysis, "w") as csvfile:
-    csvwriter = csv.writer(csvfile)
-    csvwriter.writerow("Election Results")
-    csvwriter.writerow("----------------------------")
-    csvwriter.writerow(f"Total Votes: {total_number_votes}")
-    csvwriter.writerow("----------------------------")
+    csvfile.write("Election Results\n")
+    csvfile.write("----------------------------\n")
+    csvfile.write(f"Total Votes: {total_number_votes}\n")
+    csvfile.write("----------------------------\n")
 
     # Calculate percentage of votes and total number of votes that each candidate won and print them to text file
     for name_of_candidate, votes in list_candidates_with_votes.items():
         percent = round(votes/total_number_votes*100, 3)
-        csvwriter.writerow(f"{name_of_candidate}: {percent}% ({votes})")
+        csvfile.write(f"{name_of_candidate}: {percent}% ({votes})\n")
         if votes > votes_for_winner:
             name_of_winner = name_of_candidate
             votes_for_winner = votes
 
-    csvwriter.writerow("----------------------------")
-    csvwriter.writerow(f"Winner: {name_of_winner}")
-
-# Print analysis to terminal
-print(analysis)
+    csvfile.write("----------------------------\n")
+    csvfile.write(f"Winner: {name_of_winner}\n")
+    csvfile.write("----------------------------\n")

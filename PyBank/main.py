@@ -17,10 +17,10 @@ previous_profit_or_loss = 0
 # Set initial variable for the change in profit/loss over the entire period
 change_of_profit_or_loss = 0
 
-
+# Set initial variable for total change in profit/loss over the entire period
 total_change = 0
 
-
+# Set initial variable for the counter for the total change in profit/loss over the entire period
 total_change_counter = 0
 
 # Set initial variable for the greatest increase in profits over the entire period
